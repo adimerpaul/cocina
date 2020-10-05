@@ -53,6 +53,7 @@ export default {
                     duration: 3000,
                     dismissible: true
                 });
+                this.misdatos();
             });
         },
         misdatos(){

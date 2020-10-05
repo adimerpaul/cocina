@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,10 @@ class SaleController extends Controller
         $d->product_id=$request->product_id;
         $d->user_id=Auth::user()->id;
         $d->save();
+
+        $p=Product::find($request->product_id);
+        $p->cantidad=$p->cantidad-1;
+        $p->save();
     }
 
     /**

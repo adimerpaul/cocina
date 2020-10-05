@@ -2604,6 +2604,8 @@ __webpack_require__.r(__webpack_exports__);
           duration: 3000,
           dismissible: true
         });
+
+        _this.misdatos();
       });
     },
     misdatos: function misdatos() {
