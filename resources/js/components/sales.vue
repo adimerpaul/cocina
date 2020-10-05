@@ -57,7 +57,7 @@ export default {
             });
         },
         misdatos(){
-            axios.get('/product').then(res=>{
+            axios.get('/productSale').then(res=>{
                 this.datos=res.data;
                 // console.log(this.datos);
             });

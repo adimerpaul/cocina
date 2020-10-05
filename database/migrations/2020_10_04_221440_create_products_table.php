@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('cantidad');
             $table->decimal('precio',11,2);
             $table->string('photo');
+            $table->string('estado')->default('VISIBLE');
             $table->timestamps();
         });
     }

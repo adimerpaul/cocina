@@ -108,6 +108,7 @@
                             <th>Precio</th>
                             <th>Cantidad</th>
                             <th>Fotografia</th>
+                            <th>Estado</th>
                             <th>Opciones</th>
                         </tr>
                         </thead>
@@ -119,7 +120,11 @@
                             <td>{{ i.cantidad }}</td>
                             <td>{{ i.photo }}</td>
                             <td>
+                                <span class="badge " :class="i.estado=='VISIBLE'?'badge-primary':'badge-warning'">{{ i.estado }}</span>
+                            </td>
+                            <td>
                                 <button @click="modificar(i)" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button @click="mostrar(i)" class="btn btn-info btn-xs"><i class="fa fa-eye"></i></button>
                                 <button @click="eliminar(i)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
@@ -171,6 +176,19 @@ export default {
                     dismissible: true
                 });
                 this.dato={};
+            })
+        },
+        mostrar(i){
+            axios.get('/product/'+i.id).then(async res=>{
+                await this.misdatos();
+                // $('#crear').modal('hide');
+                // this.$toast.open({
+                //     message: "Cambiado estado",
+                //     type: "success",
+                //     duration: 3000,
+                //     dismissible: true
+                // });
+                // this.dato={};
             })
         },
         update(){

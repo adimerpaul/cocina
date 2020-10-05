@@ -50,9 +50,19 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $d=Product::find($id);
+        if ($d->estado=='VISIBLE')
+            $d->estado='OCULTO';
+        else
+            $d->estado='VISIBLE';
+        $d->save();
+    }
+
+    public function productSale()
+    {
+        return Product::where('estado','=','VISIBLE')->get();
     }
 
     /**
